@@ -1,9 +1,9 @@
 ---
-import shapesUrl from '../../assets/svg/shapes.svg?url';
-import circleUrl from '../../assets/svg/circle.svg?url';
+import shapesRaw from '../../assets/svg/shapes.svg?raw';
+import circleRaw from '../../assets/svg/circle.svg?raw';
 
-const shapesSrc = shapesUrl;
-const circleSrc = circleUrl;
+const shapesSrc = `data:image/svg+xml;base64,${Buffer.from(shapesRaw).toString('base64')}`;
+const circleSrc = `data:image/svg+xml;base64,${Buffer.from(circleRaw).toString('base64')}`;
 
 interface Props {
   heading: string;
