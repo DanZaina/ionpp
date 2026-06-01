@@ -47,7 +47,7 @@ export const navigationItems: NavItem[] = [
     data: {
       label: "Printing",
       footerLabel: "Printing Services",
-      href: "printing",
+      href: "/printing",
     } as NavLink,
   },
   {
@@ -55,7 +55,7 @@ export const navigationItems: NavItem[] = [
     data: {
       label: "Signs",
       footerLabel: "Sign Services",
-      href: "signs",
+      href: "/signs",
     } as NavLink,
   },
   {
@@ -63,14 +63,14 @@ export const navigationItems: NavItem[] = [
     data: {
       label: "Promo",
       footerLabel: "Promotional Products",
-      href: "promo-products",
+      href: "/promo-products",
     } as NavLink,
   },
   {
     type: "link",
     data: {
       label: "Design & Web",
-      href: "design-digital",
+      href: "/design-digital",
     } as NavLink,
   },
   {
