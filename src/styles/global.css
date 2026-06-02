@@ -120,6 +120,24 @@
 
   --color-card-bg: rgba(248, 250, 252, 0.5);
 
+  /* --- Extended semantic aliases (for dark mode overrides) --- */
+  --color-primary-light:        var(--sky-400);
+  --color-primary-medium:       var(--sky-600);
+  --color-primary-subtle:       var(--sky-50);
+  --color-primary-bg:           var(--sky-100);
+  --color-primary-border-light: var(--sky-200);
+
+  --color-text-muted:           var(--slate-600);
+  --color-text-strong:          var(--slate-900);
+  --color-text-placeholder:     var(--slate-400);
+
+  --color-bg-subtle:            var(--slate-100);
+  --color-bg-muted:             var(--slate-200);
+  --color-bg-dark:              var(--slate-800);
+
+  --color-dot-inactive:         var(--slate-300);
+  --color-dot-hover:            var(--slate-400);
+
   --gradient-subheading: linear-gradient(
     to right,
     var(--sky-500),
@@ -127,6 +145,9 @@
     var(--cyan-500)
   );
 }
+
+
+
 
 
 /* ============================================================
@@ -296,7 +317,7 @@ li {
 
 .btn-secondary:hover {
   color: var(--color-text-light);
-  background-color: var(--slate-800);
+  background-color: var(--color-bg-dark);
 }
 
 .btn-white {
@@ -305,7 +326,7 @@ li {
 }
 
 .btn-white:hover {
-  background-color: var(--slate-100);
+  background-color: var(--color-bg-subtle);
 }
 
 .btn-cta-white {
@@ -400,12 +421,12 @@ li {
 
 .pagination-dot {
   @apply w-3 h-3 rounded-full border-0 p-0 cursor-pointer;
-  background-color: var(--slate-300);
+  background-color: var(--color-dot-inactive);
   transition: var(--transition-default);
 }
 
 .pagination-dot:hover {
-  background-color: var(--slate-400);
+  background-color: var(--color-dot-hover);
   transform: scale(1.2);
 }
 
@@ -484,7 +505,7 @@ li {
 
 .dropdown-content {
   @apply rounded-xl shadow-2xl overflow-hidden py-1.5;
-  border: 1px solid var(--slate-200);
+  border: 1px solid var(--color-bg-muted);
   background-color: var(--color-bg-white);
   backdrop-filter: blur(10px);
 }
@@ -495,7 +516,7 @@ li {
 }
 
 .dropdown-item:hover {
-  background-color: var(--slate-100);
+  background-color: var(--color-bg-subtle);
 }
 
 .dropdown-item-title {
@@ -513,7 +534,7 @@ li {
 
 .mobile-nav-link:hover {
   color: var(--color-text-heading);
-  background-color: var(--slate-200);
+  background-color: var(--color-bg-muted);
 }
 
 .mobile-nav-link[aria-current="page"],
@@ -533,7 +554,7 @@ li {
 }
 
 .mobile-dropdown-trigger:hover {
-  background-color: var(--slate-200);
+  background-color: var(--color-bg-muted);
 }
 
 .mobile-dropdown-arrow {
@@ -559,7 +580,7 @@ li {
 }
 
 .mobile-dropdown-item:hover {
-  background-color: var(--slate-200);
+  background-color: var(--color-bg-muted);
 }
 
 .mobile-backdrop {
@@ -607,7 +628,7 @@ li {
 }
 
 .footer-link:hover {
-  color: var(--sky-400);
+  color: var(--color-primary-light);
 }
 
 .footer-copyright {
@@ -709,7 +730,7 @@ li {
 .form-file-input {
   @apply w-full px-4 py-3 rounded-lg border-dashed text-sm cursor-pointer;
   border: 1px dashed var(--color-border-base);
-  color: var(--slate-600);
+  color: var(--color-text-muted);
   background-color: var(--color-bg-white);
   font-weight: var(--font-weight-medium);
   transition: var(--transition-fast);
@@ -717,12 +738,12 @@ li {
 
 .form-file-input::file-selector-button {
   @apply mr-4 py-2 px-4 rounded-md border-0 text-sm;
-  background-color: var(--sky-50);
+  background-color: var(--color-primary-subtle);
   color: var(--color-primary-dark);
 }
 
 .form-file-input:hover::file-selector-button {
-  background-color: var(--sky-100);
+  background-color: var(--color-primary-bg);
 }
 
 .form-file-input:focus {
@@ -762,7 +783,7 @@ li {
 .form-checkbox {
   @apply w-5 h-5 mt-0.5 rounded shrink-0 cursor-pointer;
   border-color: var(--color-border-base);
-  accent-color: var(--sky-600);
+  accent-color: var(--color-primary-medium);
   transition: var(--transition-fast);
 }
 
@@ -772,13 +793,13 @@ li {
 
 .form-disclaimer {
   @apply rounded-lg p-4 mb-4;
-  border: 1px solid var(--sky-200);
-  background-color: var(--sky-50);
+  border: 1px solid var(--color-primary-border-light);
+  background-color: var(--color-primary-subtle);
 }
 
 .form-disclaimer p {
   @apply text-sm leading-relaxed my-0;
-  color: var(--sky-600);
+  color: var(--color-primary-medium);
   font-weight: var(--font-weight-regular);
 }
 
@@ -788,7 +809,7 @@ li {
 }
 
 .form-submit:hover {
-  background-color: var(--sky-600);
+  background-color: var(--color-primary-medium);
 }
 
 .form-submit:disabled {
@@ -836,13 +857,13 @@ li {
 
 .modal-close {
   @apply absolute top-4 right-4 rounded-full p-1;
-  color: var(--slate-400);
+  color: var(--color-text-placeholder);
   transition: var(--transition-fast);
 }
 
 .modal-close:hover {
-  color: var(--slate-600);
-  background-color: var(--slate-100);
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-subtle);
 }
 
 .modal-header {
@@ -870,7 +891,7 @@ li {
 
 .modal-body p {
   @apply text-base my-0;
-  color: var(--slate-600);
+  color: var(--color-text-muted);
 }
 
 .modal-footer {
@@ -894,7 +915,7 @@ li {
 
 .accordion-item {
   @apply rounded-lg overflow-hidden;
-  border: 1px solid var(--slate-200);
+  border: 1px solid var(--color-bg-muted);
   background-color: var(--color-bg-white);
   transition: var(--transition-default);
 }
@@ -918,7 +939,7 @@ li {
 
 .accordion-icon {
   @apply shrink-0;
-  color: var(--slate-400);
+  color: var(--color-text-placeholder);
   transition: transform 300ms ease, color 300ms ease;
 }
 
@@ -951,7 +972,7 @@ li {
 
 .accordion-wrapper.accordion-minimal .accordion-item {
   @apply bg-transparent border-0 border-b rounded-none;
-  border-bottom-color: var(--slate-200);
+  border-bottom-color: var(--color-bg-muted);
 }
 
 .accordion-wrapper.accordion-minimal .accordion-item:last-child { @apply border-b-0; }
@@ -996,12 +1017,12 @@ li {
 
 .testimonial-dot {
   @apply w-2.5 h-2.5 rounded-full border-0 p-0 cursor-pointer;
-  background-color: var(--slate-300);
+  background-color: var(--color-dot-inactive);
   transition: var(--transition-default);
 }
 
 .testimonial-dot:hover {
-  background-color: var(--sky-400);
+  background-color: var(--color-primary-light);
   transform: scale(1.25);
 }
 
@@ -1089,7 +1110,7 @@ li {
 
 .contact-label {
   @apply tracking-wide mr-2;
-  color: var(--slate-900);
+  color: var(--color-text-strong);
   font-weight: var(--font-weight-medium);
 }
 
@@ -1106,10 +1127,12 @@ li {
 
 .contact-address {
   @apply not-italic leading-relaxed;
-  color: var(--slate-600);
+  color: var(--color-text-muted);
 }
 
 .contact-form-card {
   @apply rounded-xl shadow-lg p-8;
   background-color: var(--color-bg-white);
 }
+
+
