@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+
+interface FeatureNavItem {
+  icon: string;
+  label: string;
+  anchor: string;
+}
+
+interface Props {
+  items: FeatureNavItem[];
+}
+
+const { items } = Astro.props;
+
+const iconAssets = import.meta.glob<{ default: ImageMetadata }>(
+  "../../assets/icons/small/*",
+  { eager: true }
+);
+
+const count = items.length;
+---
+
+<!-- Matches ChecklistGrid outer wrapper exactly -->
+<div class="hidden lg:block container mx-auto px-4 max-w-6xl">
+  <div class="relative py-8 sm:py-12 px-6 sm:px-12 bg-white rounded-2xl shadow-lg overflow-hidden">
+
+    <!-- Decorative circle — identical to ChecklistGrid -->
+    <svg
+      class="absolute bottom-0 right-0 w-28 h-28 sm:w-36 sm:h-36 text-slate-50"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <circle cx="100" cy="100" r="80" fill="currentColor" />
+      <path d="M100 60 Q80 80 60 100 L100 100 Z" fill="white" fill-opacity="0.3" />
+    </svg>
+
+    <!-- Feature items grid -->
+    <div class="service-features__grid relative z-10" data-count={count}>
+      {items.map((item) => {
+        const key = `../../assets/icons/small/${item.icon}`;
+        const asset = iconAssets[key];
+
+        return (
+          <div class="service-feature">
+            <div class="service-feature__content">
+              <a
+                href={`#${item.anchor}`}
+                class="service-feature__icon-link"
+                data-anchor={item.anchor}
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <div class="service-feature__icon-wrap">
+                  {asset ? (
+                    <Image
+                      src={asset.default}
+                      alt=""
+                      width={48}
+                      height={48}
+                      class="service-feature__icon"
+                    />
+                  ) : (
+                    <span class="text-xs text-slate-400">{item.icon}</span>
+                  )}
+                </div>
+              </a>
+
+              <h3 class="service-feature__title">
+                <a
+                  href={`#${item.anchor}`}
+                  class="service-feature__title-link"
+                  data-anchor={item.anchor}
+                >
+                  {item.label}
+                </a>
+              </h3>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-anchor]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const anchor = (el as HTMLElement).dataset.anchor;
+      const target = document.getElementById(anchor!);
+      if (!target) return;
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    });
+  });
+</script>

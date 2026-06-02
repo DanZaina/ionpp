@@ -26,22 +26,6 @@ export interface FooterLink {
 // ===========================================
 
 export const navigationItems: NavItem[] = [
-  // TODO: restore dropdown when sub-pages are ready
-  // {
-  //   type: "dropdown",
-  //   data: {
-  //     label: "Printing",
-  //     footerLabel: "Printing Services",
-  //     href: "printing",
-  //     children: [
-  //       { label: "Real Estate Signs", href: "printing" },
-  //       { label: "Flyers",            href: "/services/signs" },
-  //       { label: "Posters",           href: "/services/printing/posters" },
-  //       { label: "Banners",           href: "/services/printing/banners" },
-  //       { label: "Stickers & Labels", href: "/services/printing/stickers" },
-  //     ],
-  //   } as NavDropdown,
-  // },
   {
     type: "link",
     data: {
@@ -50,6 +34,19 @@ export const navigationItems: NavItem[] = [
       href: "/printing",
     } as NavLink,
   },
+  // TODO: re-enable dropdown when inner service pages are ready
+  // {
+  //   type: "dropdown",
+  //   data: {
+  //     label: "Printing",
+  //     footerLabel: "Printing Services",
+  //     href: "/printing",
+  //     children: [
+  //       { label: "All Printing Services", href: "/printing" },
+  //       { label: "Booklets & Manuals",    href: "/printing/booklets-manuals" },
+  //     ],
+  //   } as NavDropdown,
+  // },
   {
     type: "link",
     data: {

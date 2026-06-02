@@ -56,22 +56,19 @@ const { content, imageMap, checklistBg = "bg-slate-50" } = Astro.props;
   <!-- FEATURE SECTIONS -->
   <section class="pt-6 sm:pb-20 sm:pt-32 sm:-mt-24 bg-white">
     {
-      content.features.map((feature: any, index: number) => (
-        <>
-          <div id={feature.id}>
-            <Feature
-              title={feature.title}
-              description={feature.description}
-              imageSrc={imageMap[feature.image]}
-              imageAlt={feature.imageAlt}
-              imagePosition={feature.imagePosition}
-              buttonLink={feature.buttonLink}
-              buttonText={feature.buttonText}
-              buttonTarget={feature.buttonTarget}
-            />
-          </div>
-          {index < content.features.length - 1 && <div class="sm:py-4" />}
-        </>
+      content.features.map((feature: any) => (
+        <div id={feature.id}>
+          <Feature
+            title={feature.title}
+            description={feature.description}
+            imageSrc={imageMap[feature.image]}
+            imageAlt={feature.imageAlt}
+            imagePosition={feature.imagePosition}
+            buttonLink={feature.buttonLink}
+            buttonText={feature.buttonText}
+            buttonTarget={feature.buttonTarget}
+          />
+        </div>
       ))
     }
   </section>

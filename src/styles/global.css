@@ -253,8 +253,12 @@ ul li {
 
 ul li::before {
   content: "";
-  @apply absolute left-0 w-[0.45rem] h-[0.45rem] rounded-full;
+  position: absolute;
+  left: 0;
   top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--color-primary);
 }
 
@@ -1133,6 +1137,112 @@ li {
 .contact-form-card {
   @apply rounded-xl shadow-lg p-8;
   background-color: var(--color-bg-white);
+}
+
+
+/* ============================================================
+ * 7. SERVICE FEATURES (inner service page nav grid)
+ * Mirrors the reference stylesheet § 5.11.1
+ * ============================================================ */
+
+.service-features {
+  @apply py-8 sm:py-10;
+}
+
+.service-features-card {
+  @apply relative py-12 sm:py-16 px-6 sm:px-12 rounded-2xl overflow-hidden bg-white shadow-lg;
+}
+
+.service-features__decoration {
+  @apply absolute bottom-0 right-0 w-28 h-28 sm:w-36 sm:h-36 text-slate-50;
+}
+
+.service-features__grid {
+  @apply relative z-10 grid grid-cols-1 gap-8 lg:gap-12;
+}
+
+.service-features__grid[data-count="2"] {
+  @apply lg:grid-cols-2 lg:max-w-2xl;
+}
+
+.service-features__grid[data-count="3"] {
+  @apply lg:grid-cols-3;
+}
+
+.service-features__grid[data-count="4"] {
+  @apply lg:grid-cols-2;
+}
+
+/* Dashed connector — 3 cols */
+@media (min-width: 1024px) {
+  .service-features__grid[data-count="3"]::before {
+    content: "";
+    @apply absolute pointer-events-none border-t-2 border-dashed border-slate-100;
+    top: 2rem;
+    left: calc((100% - 6rem) / 6);
+    right: calc((100% - 6rem) / 6);
+    z-index: 0;
+  }
+}
+
+/* Dashed connector — 2 cols */
+@media (min-width: 1024px) {
+  .service-features__grid[data-count="2"]::before {
+    content: "";
+    @apply absolute pointer-events-none border-t-2 border-dashed border-slate-100;
+    top: 2rem;
+    left: calc((100% - 4rem) / 4);
+    right: calc((100% - 4rem) / 4);
+    z-index: 0;
+  }
+}
+
+.service-feature {
+  @apply text-center;
+}
+
+.service-feature__content {
+  @apply flex flex-col items-center;
+}
+
+.service-feature__icon-link {
+  @apply no-underline;
+}
+
+.service-feature__icon-wrap {
+  @apply flex items-center justify-center flex-shrink-0 mb-4 bg-white rounded-full;
+  position: relative;
+  z-index: 2;
+  width: 4rem;
+  height: 4rem;
+  transition: var(--transition-fast);
+}
+
+.service-feature__icon-link:hover .service-feature__icon-wrap {
+  @apply bg-sky-100 -translate-y-1;
+}
+
+.service-feature__icon {
+  @apply object-contain;
+  width: 3.25rem;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.service-feature__title {
+  @apply text-lg m-0 mb-1 font-semibold;
+  color: var(--color-text-heading);
+}
+
+.service-feature__title-link {
+  @apply no-underline;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+.service-feature__title-link:hover {
+  color: var(--color-primary-dark);
+  @apply underline underline-offset-2 decoration-2;
 }
 
 

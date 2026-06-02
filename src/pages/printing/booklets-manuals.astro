@@ -1,0 +1,11 @@
+---
+import InnerServicePage from "../../layouts/InnerServicePage.astro";
+import content from "../../data/printing/booklets.json";
+
+import hero     from "../../assets/heros/printing-main.webp";
+import icon     from "../../assets/icons/printing.png";
+import feature1 from "../../assets/features/printing/local-printing.webp";
+import feature2 from "../../assets/features/printing/professional-printing.webp";
+---
+
+<InnerServicePage content={content} imageMap={{ hero, icon, feature1, feature2 }} />

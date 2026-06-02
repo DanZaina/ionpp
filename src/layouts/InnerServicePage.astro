@@ -1,0 +1,98 @@
+---
+/* =======================================================
+ * InnerServicePage.astro
+ * Layout for inner service sub-pages (e.g. Booklets & Manuals).
+ * Spacing mirrors ServicePage.astro exactly.
+ *
+ * Each section has a "type":
+ *   "feature" — uses Feature.astro (image + text, alternating sides)
+ *   "centre"  — uses ServiceSection.astro (centred text, no image)
+ * ======================================================= */
+
+import Layout from "../layouts/Layout.astro";
+import SmallHero from "../components/hero/HeroSmall.astro";
+import CentreText from "../components/content/CentreText.astro";
+import ServiceFeatureNav from "../components/content/ServiceFeatureNav.astro";
+import ServiceSection from "../components/content/ServiceSection.astro";
+import Feature from "../components/content/Feature.astro";
+import CTA from "../components/content/CTA.astro";
+
+interface Props {
+  content: any;
+  imageMap: Record<string, ImageMetadata>;
+}
+
+const { content, imageMap } = Astro.props;
+
+const navItems = content.featureNav ?? [];
+const sections = content.sections ?? [];
+
+
+---
+
+<Layout title={content.site.title} description={content.site.description}>
+
+  <!-- HERO -->
+  <SmallHero
+    title={content.hero.title}
+    imageSrc={imageMap[content.hero.image]}
+    imageAlt={content.hero.imageAlt}
+    bgColor={content.hero.bgColor}
+  />
+
+  <!-- CENTRE TEXT — mirrors ServicePage -->
+  <section class="sm:pt-12 relative bg-slate-50">
+    <CentreText
+      title={content.centreText.title}
+      description={content.centreText.description}
+      imageSrc={imageMap[content.centreText.icon]?.src}
+      imageAlt="ION Group"
+    />
+  </section>
+
+  <!-- FEATURE NAV — mirrors ServicePage checklist section -->
+  <section class="bg-slate-50">
+    <div class="pt-6">
+      <ServiceFeatureNav items={navItems} />
+    </div>
+  </section>
+
+  <!-- SECTIONS — single bg-white wrapper with overlap, mirrors ServicePage features -->
+  <section class="pt-6 sm:pb-20 sm:pt-32 sm:-mt-24 bg-white">
+    {sections.map((section: any) => {
+      if (section.type === "centre") {
+        return (
+          <div id={section.id}>
+            <ServiceSection
+              title={section.title}
+              description={section.description}
+            />
+          </div>
+        );
+      }
+
+      return (
+        <div id={section.id}>
+          <Feature
+            title={section.title}
+            description={section.description}
+            imageSrc={imageMap[section.image]}
+            imageAlt={section.imageAlt ?? ""}
+            imagePosition={section.imagePosition}
+            buttonText={section.buttonText}
+            buttonLink={section.buttonLink}
+            buttonTarget={section.buttonTarget}
+          />
+        </div>
+      );
+    })}
+  </section>
+
+  <!-- CTA — mirrors ServicePage -->
+  <CTA
+    heading={content.cta.heading}
+    button={content.cta.button}
+    link={content.cta.link}
+  />
+
+</Layout>
