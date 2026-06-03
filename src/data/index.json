@@ -32,19 +32,13 @@
       {
         "icon": "promo",
         "name": "Promotional Products",
-        "description": "Custom promotional products that strengthen your brand identity & create lasting impressions.",
+        "description": "Custom promotional products that strengthen your brand identity.",
         "link": "/promo-products"
-      },
-      {
-        "icon": "marketing",
-        "name": "Marketing Strategies",
-        "description": "Strategic marketing approaches that connect your business with target audiences & drive growth.",
-        "link": "/marketing"
       },
       {
         "icon": "graphic",
         "name": "Graphic Design",
-        "description": "Visual strategies converting ideas into powerful designs that express your message.",
+        "description": "Visual strategies converting ideas into powerful designs.",
         "link": "/design-digital"
       },
       {
@@ -52,6 +46,12 @@
         "name": "Web Development",
         "description": "Custom web development showcasing responsive, user-friendly digital experiences.",
         "link": "/design-digital"
+      },
+      {
+        "icon": "realtor",
+        "name": "Realtor Services",
+        "description": "Professional real estate sign printing and installation services.",
+        "link": "/real-estate-signs"
       }
     ]
   },
@@ -64,7 +64,7 @@
       "imageAlt": "Professional printing equipment and promotional materials showcase",
       "imagePosition": "left",
       "buttonLink": "/printing",
-      "buttonText": "Explore Print Services"
+      "buttonText": "Explore Print"
     },
     {
       "id": "signs",
@@ -74,7 +74,7 @@
       "imageAlt": "Professional sign services showcase",
       "imagePosition": "right",
       "buttonLink": "/signs",
-      "buttonText": "Explore Sign Services"
+      "buttonText": "Explore Signs"
     },
     {
       "id": "promo",
@@ -84,7 +84,7 @@
       "imageAlt": "Team collaboration and creative workspace at ION Print & Promo",
       "imagePosition": "left",
       "buttonLink": "/promo-products",
-      "buttonText": "Explore Promo Services"
+      "buttonText": "Explore Promo"
     },
     {
       "id": "design-digital",
@@ -94,7 +94,7 @@
       "imageAlt": "Professional design and digital services showcase",
       "imagePosition": "right",
       "buttonLink": "/design-digital",
-      "buttonText": "Explore Design Services"
+      "buttonText": "Explore Design"
     }
   ],
   "testimonials": {
