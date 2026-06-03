@@ -66,8 +66,16 @@ export const navigationItems: NavItem[] = [
   {
     type: "link",
     data: {
-      label: "Design & Web",
+      label: "Design & Digital",
       href: "/design-digital",
+    } as NavLink,
+  },
+  {
+    type: "link",
+    data: {
+      label: "Realtor Services",
+      footerLabel: "Realtor Signs & Services",
+      href: "/real-estate-signs",
     } as NavLink,
   },
   {

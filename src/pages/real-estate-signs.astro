@@ -1,0 +1,13 @@
+---
+import RealEstateSignsPage from "../layouts/ServicePage.astro";
+import content from "../data/signs/real-estate-signs.json";
+
+import hero     from "../assets/heros/realtors.webp";
+import feature1 from "../assets/features/signs/wind-flag.webp";
+import feature2 from "../assets/features/signs/the-elements.webp";
+import icon     from "../assets/icons/sign.png";
+
+const imageMap = { hero, feature1, feature2, icon };
+---
+
+<RealEstateSignsPage content={content} imageMap={imageMap} />

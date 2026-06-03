@@ -158,7 +158,7 @@ html,
 body {
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-regular);
-  background-color: var(--color-bg-white);
+  background-color: var(--color-bg-base);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -453,9 +453,9 @@ li {
 }
 
 .nav-link {
-  @apply inline-flex items-center no-underline text-sm leading-none;
+  @apply inline-flex items-center no-underline text-sm/loose;
   color: var(--color-text-light);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   transition: var(--transition-default);
 }
 
@@ -984,8 +984,7 @@ li {
 /* --- 5.9 Testimonials --- */
 
 .testimonial-rule {
-  @apply hidden lg:block w-44 h-1 mx-auto mb-4 rounded-full;
-  background-color: var(--color-text-heading);
+  @apply hidden lg:block w-44 h-1 mx-auto mb-4 rounded-full bg-sky-500;
 }
 
 .testimonial-container {
@@ -1048,7 +1047,7 @@ li {
 /* --- 6.1 CTA --- */
 
 .cta {
-  @apply relative py-0 sm:py-10 sm:px-8 bg-stone-950 sm:mt-20;
+  @apply relative pt-0 pb-10 sm:pb-10 sm:pt-20 sm:px-8 bg-stone-950;
 }
 
 .cta-inner {

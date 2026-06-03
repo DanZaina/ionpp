@@ -4,7 +4,7 @@
     "description": "Custom signs, banners, wall graphics, LED signs, and large format printing in Barrie, Muskoka, and the GTA. Design, print & installation. "
   },
   "hero": {
-    "title": "Signs",
+    "title": "Sign Services",
     "imageAlt": "Professional printing services showcase",
     "bgColor": "#ff7f50",
     "image": "hero"
@@ -65,6 +65,6 @@
   "cta": {
     "heading": "Need real estate signs and installs? Visit our Realtor Signs & Services page.",
     "button": "Learn More",
-    "link": "/printing"
+    "link": "/real-estate-signs"
   }
 }

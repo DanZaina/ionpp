@@ -1,0 +1,29 @@
+---
+import Accordion from "./Accordion.astro";
+
+interface AccordionItem {
+  id: string;
+  title: string;
+  content: string;
+}
+
+interface Props {
+  items: AccordionItem[];
+  heading?: string;
+  allowMultiple?: boolean;
+  bg?: string; // optional background override, defaults to "bg-slate-50"
+}
+
+const { items, heading, allowMultiple = false, bg = "bg-slate-50" } = Astro.props;
+
+if (!items || items.length === 0) return;
+---
+
+<section class={`${bg} py-14 sm:pb-32`}>
+  <div class="mx-auto max-w-3xl px-6 lg:px-8">
+    {heading && (
+      <h3 class="mb-10 text-center text-sky-500!">{heading}</h3>
+    )}
+    <Accordion items={items} allowMultiple={allowMultiple} />
+  </div>
+</section>

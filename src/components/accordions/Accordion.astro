@@ -69,29 +69,30 @@ const { items, allowMultiple = false, className = '' } = Astro.props;
 </div>
 
 <script define:vars={{ allowMultiple }}>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initAccordions() {
     const accordionItems = document.querySelectorAll('[data-accordion-item]');
-    
+
     accordionItems.forEach((item) => {
+      // Skip if already initialised
+      if (item.dataset.accordionReady) return;
+      item.dataset.accordionReady = 'true';
+
       const trigger = item.querySelector('[data-accordion-trigger]');
       const content = item.querySelector('[data-accordion-content]');
-      const contentInner = content.querySelector('.accordion-content-inner');
-      
+      const contentInner = content && content.querySelector('.accordion-content-inner');
+
       if (!trigger || !content || !contentInner) return;
-      
-      // Set initial height
+
       content.style.height = '0px';
-      
+
       trigger.addEventListener('click', () => {
         const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-        
+
         if (!allowMultiple) {
-          // Close all other accordion items
           accordionItems.forEach((otherItem) => {
             if (otherItem !== item) {
               const otherTrigger = otherItem.querySelector('[data-accordion-trigger]');
               const otherContent = otherItem.querySelector('[data-accordion-content]');
-              
               if (otherTrigger && otherContent) {
                 otherTrigger.setAttribute('aria-expanded', 'false');
                 otherContent.style.height = '0px';
@@ -99,29 +100,30 @@ const { items, allowMultiple = false, className = '' } = Astro.props;
             }
           });
         }
-        
-        // Toggle current item
+
         if (isExpanded) {
           trigger.setAttribute('aria-expanded', 'false');
           content.style.height = '0px';
         } else {
           trigger.setAttribute('aria-expanded', 'true');
-          const height = contentInner.scrollHeight;
-          content.style.height = `${height}px`;
+          content.style.height = `${contentInner.scrollHeight}px`;
         }
       });
-      
-      // Handle window resize
+
       let resizeTimer;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
           if (trigger.getAttribute('aria-expanded') === 'true') {
-            const height = contentInner.scrollHeight;
-            content.style.height = `${height}px`;
+            content.style.height = `${contentInner.scrollHeight}px`;
           }
         }, 250);
       });
     });
-  });
+  }
+
+  // Run immediately (script is inline, DOM nodes above already exist)
+  initAccordions();
+  // Also re-run on Astro view transitions
+  document.addEventListener('astro:page-load', initAccordions);
 </script>

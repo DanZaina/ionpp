@@ -13,6 +13,7 @@ import SmallHero from "../components/hero/HeroSmall.astro";
 import CentreText from "../components/content/CentreText.astro";
 import Feature from "../components/content/Feature.astro";
 import ChecklistGrid from "../components/content/Checklistgrid.astro";
+import AccordionSection from "../components/accordions/AccordionSection.astro";
 import CTA from "../components/content/CTA.astro";
 
 /* =======================================================
@@ -25,6 +26,9 @@ interface Props {
 }
 
 const { content, imageMap, checklistBg = "bg-slate-50" } = Astro.props;
+
+const features = content.features ?? [];
+const accordions = content.accordions ?? [];
 ---
 
 <Layout title={content.site.title} description={content.site.description}>
@@ -56,7 +60,7 @@ const { content, imageMap, checklistBg = "bg-slate-50" } = Astro.props;
   <!-- FEATURE SECTIONS -->
   <section class="pt-6 sm:pb-20 sm:pt-32 sm:-mt-24 bg-white">
     {
-      content.features.map((feature: any) => (
+      features.map((feature: any) => (
         <div id={feature.id}>
           <Feature
             title={feature.title}
@@ -72,6 +76,9 @@ const { content, imageMap, checklistBg = "bg-slate-50" } = Astro.props;
       ))
     }
   </section>
+
+  <!-- ACCORDION SECTION (optional — only renders if content.accordions exists) -->
+  <AccordionSection items={accordions} heading={content.accordionHeading} />
 
   <!-- CTA SECTION -->
   <CTA

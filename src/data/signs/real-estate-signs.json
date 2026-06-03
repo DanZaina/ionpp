@@ -1,0 +1,84 @@
+{
+  "site": {
+    "title": "ION Print & Promo | real estate signs",
+    "description": "Professional real estate sign services for real estate agents and brokers across Simcoe County. We design, print, install, and remove durable coroplast signs backed by 20+ years of experience (formerly Cardinal Signs & Gibson Digital Print)."
+  },
+  "hero": {
+    "title": "Realtor Signs & Services",
+    "imageAlt": "Real estate signs on a lawn",
+    "bgColor": "#DA2C43",
+    "image": "hero"
+  },
+  "centreText": {
+    "title": "Real Estate Signs, Done Right",
+    "description": "Professional real estate sign printing and installation services for realtors and brokers across Barrie, Innisfil, Oro, Orillia, Midland and beyond. ",
+    "icon": "icon"
+  },
+  "services": {
+    "checklist": [
+      { "text": "A-Frames" },
+      { "text": "Durable" },
+      { "text": "Fade Resistant" },
+      { "text": "High Quality" },
+      { "text": "Scratch Resistant" },
+      { "text": "Vandal Resistant" },
+      { "text": "Weather Resistant" },
+      { "text": "Wire Stands" }
+    ]
+  },
+  "features": [
+    {
+      "id": "signs",
+      "title": "Backed by experience.",
+      "description": "<p>We have over 20 years of experience through our partnership with Cardinal Signs, formerly Gibson Digital Print.</p><p>From durable coroplast signs and sturdy wooden posts to custom sign toppers, installation and take-down, we help your listings get noticed where it matters.</p>",
+      "imageAlt": "Real estate coroplast lawn sign installation",
+      "imagePosition": "left",
+      "image": "feature1",
+      "buttonLink": "/contact",
+      "buttonText": "Get a Quote"
+    },
+    {
+      "id": "install",
+      "title": "More ways to market your listings.",
+      "description": "<p>We also offer print and promotional services for realtors, including business cards, feature sheets, client gifts and more.</p><p>Everything is designed to help you promote your listings, build your brand and grow your real estate business.</p>",
+      "imageAlt": "Sign post installation in front yard",
+      "imagePosition": "right",
+      "image": "feature2",
+      "buttonLink": "/printing",
+      "buttonText": "Learn More"
+    }
+  ],
+  "accordionHeading": "Frequently Asked Questions",
+  "accordions": [
+    {
+      "id": "turnaround",
+      "title": "How fast can you turn around sign orders?",
+      "content": "Most standard coroplast and aluminum signs are ready within 2–3 business days. Rush turnarounds are available — contact us to discuss your timeline."
+    },
+    {
+      "id": "install-time",
+      "title": "How quickly can you install after printing?",
+      "content": "We typically schedule installation within 1–2 business days of sign completion. We'll confirm a time that works with your listing schedule."
+    },
+    {
+      "id": "removal",
+      "title": "Do you handle sign removal after a sale?",
+      "content": "Yes. Once your listing closes, just give us a call or send an email and we'll arrange prompt removal. We can also set up automatic removal scheduling if you prefer."
+    },
+    {
+      "id": "brokerage",
+      "title": "Can you set up a program for our whole brokerage?",
+      "content": "Absolutely. We work with brokerages to create templated sign programs so every agent's materials are on-brand and easy to order. Reach out to discuss volume pricing and setup."
+    },
+    {
+      "id": "riders",
+      "title": "What rider panels do you offer?",
+      "content": "We print standard riders (Sold, Open House, Price Reduced, For Lease, etc.) as well as fully custom riders with agent names, phone numbers, or brokerage branding."
+    }
+  ],
+  "cta": {
+    "heading": "Ready to put your listings in the spotlight? Contact our team today.",
+    "button": "Contact Us",
+    "link": "/contact"
+  }
+}
