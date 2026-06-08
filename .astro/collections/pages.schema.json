@@ -291,6 +291,100 @@
           ],
           "additionalProperties": false
         },
+        "installMap": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "subtitle": {
+              "type": "string"
+            },
+            "center": {
+              "type": "object",
+              "properties": {
+                "lat": {
+                  "type": "number"
+                },
+                "lng": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "lat",
+                "lng"
+              ],
+              "additionalProperties": false
+            },
+            "zoom": {
+              "type": "number"
+            },
+            "zones": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "minKm": {
+                    "type": "number"
+                  },
+                  "maxKm": {
+                    "type": "number"
+                  },
+                  "surcharge": {
+                    "type": "number"
+                  },
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "minKm",
+                  "maxKm",
+                  "surcharge",
+                  "color"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "messages": {
+              "type": "object",
+              "properties": {
+                "free": {
+                  "type": "string"
+                },
+                "surcharge": {
+                  "type": "string"
+                },
+                "outside": {
+                  "type": "string"
+                },
+                "outsideSub": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "free",
+                "surcharge",
+                "outside",
+                "outsideSub"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "title",
+            "subtitle",
+            "center",
+            "zoom",
+            "zones",
+            "messages"
+          ],
+          "additionalProperties": false
+        },
         "accordionHeading": {
           "type": "string"
         },

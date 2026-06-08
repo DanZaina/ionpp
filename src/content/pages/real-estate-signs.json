@@ -35,7 +35,7 @@
       "imagePosition": "left",
       "image": "feature1",
       "buttonLink": "#install-map",
-      "buttonText": "Check Install Pricing"
+      "buttonText": "Install Pricing Map"
     },
     {
       "id": "installs",
@@ -66,6 +66,24 @@
       "buttonText": "Learn More"
     }
   ],
+  "installMap": {
+    "title": "Install Pricing Map",
+    "subtitle": "Surcharges are based on straight-line distance from Barrie.",
+    "center": { "lat": 44.3894, "lng": -79.6903 },
+    "zoom": 9,
+    "zones": [
+      { "id": "z20", "minKm": 0,  "maxKm": 20, "surcharge": 0,  "color": "#16a34a" },
+      { "id": "z30", "minKm": 20, "maxKm": 30, "surcharge": 10, "color": "#d97706" },
+      { "id": "z40", "minKm": 30, "maxKm": 40, "surcharge": 15, "color": "#ea580c" },
+      { "id": "z50", "minKm": 40, "maxKm": 50, "surcharge": 20, "color": "#dc2626" }
+    ],
+    "messages": {
+      "free": "No surcharge — your address falls within the standard service area.",
+      "surcharge": "Contact us for more information and pricing.",
+      "outside": "Outside standard service area",
+      "outsideSub": "Contact us for more information and pricing."
+    }
+  },
   "accordionHeading": "Frequently Asked Questions Coming Soon!",
   "_accordions": [
     {

@@ -23,6 +23,7 @@ const imageMap = { hero, feature1, feature2, feature3, feature4, icon };
 const features = content.features ?? [];
 const accordions = content.accordions ?? [];
 const mapToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+const installMap = content.installMap;
 ---
 
 <Layout title={content.site.title} description={content.site.description}>
@@ -71,7 +72,7 @@ const mapToken = import.meta.env.PUBLIC_MAPBOX_TOKEN;
   </section>
 
   <!-- SERVICE AREA MODAL TRIGGER -->
-  {mapToken && <ServiceAreaModal token={mapToken} />}
+  {mapToken && installMap && <ServiceAreaModal token={mapToken} installMap={installMap} />}
 
   <!-- ACCORDION -->
   <AccordionSection items={accordions} heading={content.accordionHeading} />

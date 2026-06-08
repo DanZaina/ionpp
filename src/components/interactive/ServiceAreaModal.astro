@@ -1,8 +1,29 @@
 ---
+interface Zone {
+  id: string;
+  minKm: number;
+  maxKm: number;
+  surcharge: number;
+  color: string;
+}
+interface InstallMap {
+  title: string;
+  subtitle: string;
+  center: { lat: number; lng: number };
+  zoom: number;
+  zones: Zone[];
+  messages: {
+    free: string;
+    surcharge: string;
+    outside: string;
+    outsideSub: string;
+  };
+}
 interface Props {
   token: string;
+  installMap: InstallMap;
 }
-const { token } = Astro.props;
+const { token, installMap } = Astro.props;
 ---
 
 <!-- Modal backdrop -->
@@ -19,8 +40,8 @@ const { token } = Astro.props;
     <!-- Header -->
     <div class="flex items-start justify-between px-6 pt-6 pb-4">
       <div>
-        <h3 class="text-xl font-bold" style="color: var(--color-primary);">Sign Install Pricing Map</h3>
-        <p class="text-sm mt-1" style="color: var(--color-text-base);">Surcharges are based on straight-line distance from Barrie.</p>
+        <h3 class="text-xl font-bold" style="color: var(--color-primary);">{installMap.title}</h3>
+        <p class="text-sm mt-1" style="color: var(--color-text-base);">{installMap.subtitle}</p>
       </div>
       <button id="sam-close" type="button" class="ml-4 flex-shrink-0 mt-0.5 transition-colors" style="color: var(--color-text-placeholder);">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,10 +56,15 @@ const { token } = Astro.props;
     </div>
 
     <!-- Map -->
-    <div id="sam-map" data-token={token} style="height: 340px; flex-shrink: 0;"></div>
+    <div
+      id="sam-map"
+      data-token={token}
+      data-config={JSON.stringify({ center: installMap.center, zoom: installMap.zoom, zones: installMap.zones, messages: installMap.messages })}
+      style="height: 340px; flex-shrink: 0;"
+    ></div>
 
     <!-- Result -->
-    <div id="sam-result" class="hidden px-6 py-5" style="border-top: 1px solid var(--color-border-base);"></div>
+    <div id="sam-result" class="hidden px-6 py-4" style="border-top: 1px solid var(--color-border-base);"></div>
 
   </div>
 </div>
@@ -46,37 +72,12 @@ const { token } = Astro.props;
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
 <link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" rel="stylesheet" />
 
-<style is:global>
-  #sam-geocoder .mapboxgl-ctrl-geocoder {
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    border: 1px solid var(--color-border-base);
-    border-radius: 0.5rem;
-    font-family: inherit;
-  }
-  #sam-geocoder .mapboxgl-ctrl-geocoder--input {
-    padding: 0.6rem 2.5rem;
-    font-size: 0.875rem;
-    color: var(--color-text-heading);
-  }
-  #sam-geocoder .mapboxgl-ctrl-geocoder--input:focus {
-    outline: 2px solid var(--color-border-accent);
-    outline-offset: -2px;
-  }
-  .mapboxgl-ctrl-attrib,
-  .mapboxgl-ctrl-logo { display: none !important; }
-</style>
-
 <script>
-  const BARRIE = { lat: 44.3894, lng: -79.6903 };
-
-  const ZONES = [
-    { id: 'z20', minKm: 0,  maxKm: 20, surcharge: 0,  color: '#0ea5e9', label: 'Within Barrie area'    },
-    { id: 'z30', minKm: 20, maxKm: 30, surcharge: 10, color: '#fbbf24', label: '20 – 30 km from Barrie' },
-    { id: 'z40', minKm: 30, maxKm: 40, surcharge: 15, color: '#f97316', label: '30 – 40 km from Barrie' },
-    { id: 'z50', minKm: 40, maxKm: 50, surcharge: 20, color: '#f43f5e', label: '40 – 50 km from Barrie' },
-  ];
+  const mapEl = document.getElementById('sam-map') as HTMLElement;
+  const config = JSON.parse(mapEl?.dataset.config ?? '{}');
+  const BARRIE = config.center ?? { lat: 44.3894, lng: -79.6903 };
+  const ZONES: { id: string; minKm: number; maxKm: number; surcharge: number; color: string }[] = config.zones ?? [];
+  const MESSAGES = config.messages ?? {};
 
   function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number) {
     const R = 6371, toRad = (x: number) => x * Math.PI / 180;
@@ -107,7 +108,6 @@ const { token } = Astro.props;
     return ZONES.find(z => km > z.minKm && km <= z.maxKm) ?? (km <= 20 ? ZONES[0] : null);
   }
 
-  // Fetch actual place polygon from Nominatim
   async function fetchPlacePolygon(lat: number, lng: number): Promise<any> {
     try {
       const res = await fetch(
@@ -133,48 +133,25 @@ const { token } = Astro.props;
 
     const dist = Math.round(distKm);
     const boldPlace = boldFirstPart(placeName);
+    const contactLink = `<a href="/contact" class="font-medium" style="color:var(--color-text-accent)">Contact us</a>`;
 
     if (!zone) {
       el.innerHTML = `
-        <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:var(--color-bg-subtle)">
-            <svg class="w-5 h-5" style="color:var(--color-text-base)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-bold text-base" style="color:var(--color-text-heading)">Outside standard service area</p>
-            <p class="text-sm mt-0.5" style="color:var(--color-text-placeholder)">Your location: ${boldPlace} &middot; ${dist} km from Barrie</p>
-            <p class="text-sm mt-1" style="color:var(--color-text-base)">Please <a href="/contact" class="font-medium" style="color:var(--color-text-accent)">contact us</a> for a custom install quote.</p>
-          </div>
-        </div>`;
+        <p class="text-lg font-bold" style="color:#94a3b8;">${MESSAGES.outside}</p>
+        <p class="text-sm mt-0.5" style="color:var(--color-text-placeholder);">Your location: ${boldPlace} &middot; ${dist} km from Barrie</p>
+        <p class="text-sm mt-1" style="color:var(--color-text-base);">${contactLink} ${MESSAGES.outsideSub}</p>`;
     } else {
       const free = zone.surcharge === 0;
       el.innerHTML = `
-        <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:${zone.color}20;">
-            <svg class="w-5 h-5" style="color:${zone.color}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              ${free
-                ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>`
-                : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>`
-              }
-            </svg>
-          </div>
-          <div>
-            <p class="font-bold text-base" style="color:var(--color-text-heading)">
-              ${free ? 'Standard installation rate' : `+$${zone.surcharge} install surcharge`}
-            </p>
-            <p class="text-sm mt-0.5" style="color:var(--color-text-placeholder)">
-              Your location: ${boldPlace} &middot; ${dist} km from Barrie
-            </p>
-            <p class="text-sm mt-1" style="color:var(--color-text-base)">
-              ${free
-                ? 'No surcharge — your address falls within the standard service area.'
-                : `${zone.label}. <a href="/contact" class="font-medium" style="color:var(--color-text-accent)">Contact us</a> to confirm your order.`
-              }
-            </p>
-          </div>
-        </div>`;
+        <p class="text-lg font-bold" style="color:${zone.color};">
+          ${free ? 'Standard installation rate' : `+$${zone.surcharge} install surcharge`}
+        </p>
+        <p class="text-sm mt-0.5" style="color:var(--color-text-placeholder);">
+          Your location: ${boldPlace} &middot; ${dist} km from Barrie
+        </p>
+        <p class="text-sm mt-1" style="color:var(--color-text-base);">
+          ${free ? MESSAGES.free : `${contactLink} ${MESSAGES.surcharge}`}
+        </p>`;
     }
     el.classList.remove('hidden');
   }
@@ -213,18 +190,16 @@ const { token } = Astro.props;
       container: 'sam-map',
       style: 'mapbox://styles/mapbox/light-v11',
       center: [BARRIE.lng, BARRIE.lat],
-      zoom: 9,
+      zoom: config.zoom ?? 9,
     });
 
     mapInstance.on('load', () => {
-      // Draw donut zones — outermost first so inner paints on top
       [...ZONES].reverse().forEach(z => {
         mapInstance.addSource(z.id, { type: 'geojson', data: donutGeoJSON(BARRIE.lat, BARRIE.lng, z.minKm, z.maxKm) });
         mapInstance.addLayer({ id: `${z.id}-fill`, type: 'fill', source: z.id, paint: { 'fill-color': z.color, 'fill-opacity': 0.08 } });
         mapInstance.addLayer({ id: `${z.id}-line`, type: 'line', source: z.id, paint: { 'line-color': z.color, 'line-width': 1.5, 'line-opacity': 0.35 } });
       });
 
-      // Place highlight layer (empty until search)
       mapInstance.addSource('place-hl', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
       mapInstance.addLayer({ id: 'place-hl-fill', type: 'fill', source: 'place-hl', paint: { 'fill-color': '#0ea5e9', 'fill-opacity': 0.3 } });
       mapInstance.addLayer({ id: 'place-hl-line', type: 'line', source: 'place-hl', paint: { 'line-color': '#0ea5e9', 'line-width': 2.5, 'line-opacity': 0.9 } });
@@ -252,7 +227,6 @@ const { token } = Astro.props;
 
       showResult(dist, e.result.place_name, mapInstance, zone);
 
-      // Fetch place polygon async — separated from the sync handler to avoid breaking the event
       fetchPlacePolygon(lat, lng).then(geometry => {
         if (!geometry || !mapInstance?.getSource('place-hl')) return;
         mapInstance.getSource('place-hl').setData({ type: 'Feature', geometry });

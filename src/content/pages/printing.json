@@ -21,9 +21,7 @@
       "description": "<p>Printed materials remain one of the most effective tools for marketing, communication, operations, and brand visibility.</p><p>Strong print design and quality production help businesses stand out, stay organized, and create a more professional customer experience.</p><p>From sales materials and office essentials to event printing and branded packaging, professionally printed materials help reinforce your brand in ways digital advertising alone cannot.</p>",
       "imageAlt": "Modern digital printing equipment producing high-quality materials",
       "imagePosition": "left",
-      "image": "feature1",
-      "buttonLink": "/contact",
-      "buttonText": "Inquire Today"
+      "image": "feature1"
     },
     {
       "id": "local printing",

@@ -137,6 +137,28 @@ const pages = defineCollection({
       })
       .optional(),
 
+    installMap: z
+      .object({
+        title: z.string(),
+        subtitle: z.string(),
+        center: z.object({ lat: z.number(), lng: z.number() }),
+        zoom: z.number(),
+        zones: z.array(z.object({
+          id: z.string(),
+          minKm: z.number(),
+          maxKm: z.number(),
+          surcharge: z.number(),
+          color: z.string(),
+        })),
+        messages: z.object({
+          free: z.string(),
+          surcharge: z.string(),
+          outside: z.string(),
+          outsideSub: z.string(),
+        }),
+      })
+      .optional(),
+
     accordionHeading: z.string().optional(),
     accordions: z.array(accordion).optional(),
 

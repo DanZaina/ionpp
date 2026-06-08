@@ -59,7 +59,7 @@
     {
       "id": "printing",
       "image": "feature1",
-      "title": "Printing Services",
+      "title": "Printing Services.",
       "description": "<p>We deliver high-quality print products in all shapes, sizes and formats, from simple projects to bold full-colour displays, including real estate signs and installations.</p><p>Our experienced design and print team works with you to keep your brand sharp, consistent and professional.</p>",
       "imageAlt": "Professional printing equipment and promotional materials showcase",
       "imagePosition": "left",
@@ -69,7 +69,7 @@
     {
       "id": "signs",
       "image": "feature2",
-      "title": "Sign Services",
+      "title": "Sign Services.",
       "description": "<p>From real estate signs to large-format displays, we deliver signage solutions that make your business impossible to miss.</p><p>Our team handles everything from design through to professional installation, so your brand shows up sharp every time.</p>",
       "imageAlt": "Professional sign services showcase",
       "imagePosition": "right",
@@ -79,7 +79,7 @@
     {
       "id": "promo",
       "image": "feature3",
-      "title": "Promotional Products",
+      "title": "Promotional Products.",
       "description": "<p>Why juggle multiple suppliers when you can get everything in one place? From custom merchandise to branded apparel and gifts, we help your organization stand out.</p><p>ION Print & Promo, formerly IO Promo, keeps your brand polished and top of mind.</p>",
       "imageAlt": "Team collaboration and creative workspace at ION Print & Promo",
       "imagePosition": "left",
@@ -89,7 +89,7 @@
     {
       "id": "design-digital",
       "image": "feature4",
-      "title": "Design & Web",
+      "title": "Design & Digital.",
       "description": "<p>Along with in-house graphic design, print and promotional services, our team can also support your website, copywriting and marketing needs.</p><p> We keep your brand sharp, consistent and professional everywhere it appears.</p>",
       "imageAlt": "Professional design and digital services showcase",
       "imagePosition": "right",

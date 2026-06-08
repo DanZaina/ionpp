@@ -1,0 +1,51 @@
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cookie-banner__icon" aria-hidden="true">
+    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+    <path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/>
+    <path d="M11 17v.01"/><path d="M7 14v.01"/>
+  </svg>
+  <p class="cookie-banner__text">We use cookies to enhance your experience.</p>
+  <div class="cookie-banner__actions">
+    <button id="cookie-reject" class="btn btn-secondary cookie-banner__btn">Reject all</button>
+    <button id="cookie-accept" class="btn btn-primary cookie-banner__btn">Accept all</button>
+  </div>
+</div>
+
+<script>
+  const COOKIE_KEY = 'ion-cookie-consent';
+
+  function hideBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) {
+      banner.classList.remove('cookie-banner--visible');
+      setTimeout(() => banner.classList.add('cookie-banner--hidden'), 300);
+    }
+  }
+
+  function setup() {
+    const consent = localStorage.getItem(COOKIE_KEY);
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    if (consent) {
+      banner.classList.add('cookie-banner--hidden');
+      return;
+    }
+
+    // Show after brief delay so it doesn't flash on paint
+    setTimeout(() => banner.classList.add('cookie-banner--visible'), 600);
+
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+      localStorage.setItem(COOKIE_KEY, 'accepted');
+      hideBanner();
+    });
+
+    document.getElementById('cookie-reject')?.addEventListener('click', () => {
+      localStorage.setItem(COOKIE_KEY, 'rejected');
+      hideBanner();
+    });
+  }
+
+  document.addEventListener('astro:page-load', setup);
+</script>
