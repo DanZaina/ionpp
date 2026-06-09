@@ -187,12 +187,12 @@ h1 {
 
 h2 {
   @apply text-3xl sm:text-5xl/snug text-balance;
-  color: var(--color-text-heading);
+  color: var(--color-primary-dark);
   font-weight: var(--font-weight-bold);
 }
 
 h3 {
-  @apply text-3xl sm:text-4xl/relaxed text-pretty;
+  @apply text-3xl sm:text-4xl/snug text-pretty;
   color: var(--color-text-heading);
   font-weight: var(--font-weight-bold);
 }
@@ -300,7 +300,7 @@ li {
 /* --- 5.1 Buttons --- */
 
 .btn {
-  @apply inline-flex items-center justify-center rounded py-4 px-7 text-base cursor-pointer;
+  @apply inline-flex items-center justify-center rounded border-2 border-transparent py-4 px-7 text-base cursor-pointer;
   color: var(--color-text-light);
   background-color: var(--color-primary);
   font-weight: var(--font-weight-medium);
@@ -994,13 +994,13 @@ li {
     flex-direction: column;
     border-radius: 1rem;
     white-space: normal;
-    width: calc(100% - 2rem);
+    width: calc(100% - 1rem);
     bottom: 1rem;
     padding: 1rem 1.25rem;
   }
   .cookie-banner__actions {
     width: 100%;
-    justify-content: flex-end;
+    justify-content: center;
   }
 }
 
@@ -1112,9 +1112,12 @@ li {
 }
 
 .testimonial-dot {
-  /* Visual dot is 10px; padding expands tap target to 24px minimum (a11y) */
-  @apply w-2.5 h-2.5 rounded-full border-0 cursor-pointer;
+  /* 24px total tap target; 10px visible dot via background-clip */
+  @apply rounded-full border-0 cursor-pointer;
+  width: 24px;
+  height: 24px;
   padding: 7px;
+  box-sizing: border-box;
   background-clip: content-box;
   background-color: var(--color-dot-inactive);
   transition: var(--transition-default);

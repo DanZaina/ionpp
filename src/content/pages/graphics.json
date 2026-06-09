@@ -10,47 +10,54 @@
     "image": "hero"
   },
   "centreText": {
-    "title": "Good design makes a big difference!",
-    "description": "At ION Print & Promo, our in-house designers help local businesses look professional—without the big-agency price tag. From logos to signage and marketing materials, we'll make your brand consistent, polished, and built to impress.",
+    "title": "Good design makes your business look its best",
+    "description": "At ION Print & Promo, our in-house designers help local businesses and organizations look professional, without the big-agency price tag. From logos to signage, marketing materials, and everything else, we’ll make your brand strong, polished, and built to impress. ",
     "icon": "icon"
   },
 
   "features": [
     {
       "id": "intro",
-      "title": "A seamless brand experience",
-      "description": "<p>From your storefront to your website, everything your customers see should look sharp and feel like you. We help businesses and non-profits look good—both in print and online.</p><p>Whether it's your business cards, signs, menus, vehicle graphics, website updates, or anything else, our designers work closely with you to get it right, every time.</p>",
+      "title": "Smart design for real-world use.",
+      "description": "<p>We offer a full suite of graphic design supports for every business and budget. A professional designer helps make sure every piece looks clean, balanced, branded and ready to represent you properly.</p><p>Your branding, printed materials and digital presence should reflect your brand, your message and the quality of the work you do.</p>",
       "imageAlt": "Modern digital printing equipment producing high-quality materials",
       "imagePosition": "left",
       "image": "feature1"
     },
     {
-      "id": "made simple",
-      "title": "Good design shouldn't feel complicated",
-      "description": "<p>We take the time to understand your business, your goals, and your audience, then bring your ideas to life with clear, easy communication along the way.</p><p>You'll be involved from the first concept to the final proof, making sure everything looks great and works just the way you need it to.</p>",
+      "id": "designed here",
+      "title": "Designed here. Printed here. Done right.",
+      "description": "<p>Our in-house graphic designers understand how designs need to be built for printing, signage and promo products.</p><p> That means your files are created with the right sizing, spacing, resolution, colours, margins and finishing requirements from the start.</p><p>Our expert team works directly with you to make the process clear, efficient and easy. Stop by our Barrie office to see samples of work or chat with one of our graphic designers to get started.</p>",
       "imageAlt": "Custom printed materials with specialty finishes",
       "imagePosition": "right",
-      "image": "feature2",
-      "buttonLink": "/printing",
-      "buttonText": "Explore Printing Services"
+      "image": "feature2"
+    },
+    {
+      "id": "support",
+      "title": "Design support for every stage of your business.",
+      "description": "<p>Whether you are launching a new business, refreshing your brand or updating existing materials, we can help bring your ideas to life.</p><p>We take the time to understand your business, your goals and your audience so the final product feels like you and not an online template.</p><p>You'll be involved from the first concept to the final proof, making sure everything looks great and works just the way you need it to.</p>",
+      "imageAlt": "Custom printed materials with specialty finishes",
+      "imagePosition": "left",
+      "image": "feature3",
+      "buttonLink": "/contact",
+      "buttonText": "Inquire Today"
     }
   ],
   "services": {
     "checklist": [
-      { "text": "Brand Identity" },
+      { "text": "Banners" },
+      { "text": "Branding" },
       { "text": "Business Cards" },
-      { "text": "Custom Websites" },
-      { "text": "Flyers" },
-      { "text": "Logo Concepts" },
-      { "text": "Packaging & Labels" },
-      { "text": "Posters & Signs" },
-      { "text": "Social Media" }
+      { "text": "Marketing" },
+      { "text": "Menus" },
+      { "text": "Promo Artwork" },
+      { "text": "Signs" },
+      { "text": "Web Design" }
     ]
   },
   "cta": {
-    "heading": "Visit us at our Barrie location at 178 Tiffin Street, Barrie or call us at 705-739-1969!",
-    "button": "Get in Touch Today",
-    "link": "/contact",
-    "imageAlt": "Professional printing consultation and services"
+    "heading": "We're your go-to print shop for custom signs in all sizes & formats!",
+    "button": "Learn More",
+    "link": "/signs"
   }
 }

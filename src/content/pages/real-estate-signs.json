@@ -10,7 +10,7 @@
     "image": "hero"
   },
   "centreText": {
-    "title": "Your One-Stop Real Estate Sign Shop",
+    "title": "Your one-stop real estate sign shop",
     "description": "We do it all – sign printing, posts, installs and take-downs - handled by the trusted team that agents know and trust.",
     "icon": "icon"
   },
@@ -30,20 +30,20 @@
     {
       "id": "signs",
       "title": "Backed by experience.",
-      "description": "<p>We have over 20 years of experience through our partnership with Cardinal Signs, formerly Gibson Digital Print.</p><p>We handle everything from durable coroplast printing and sturdy wooden posts, to custom sign toppers, full installation and take-down so your listings and properties get the visibility they need.</p>",
+      "description": "<p>We have over 20 years of experience through our partnership with Cardinal Signs, formerly Gibson Digital Print.</p><p>We handle everything from durable coroplast printing and sturdy wooden posts, to custom sign toppers, full installation and take-down so your listings and properties get the visibility they need.</p><p><p>Be sure to check back for our FAQs <strong>(coming soon)</strong> for all the details and how to get signed up! </p></p>",
       "imageAlt": "Real estate coroplast lawn sign installation",
       "imagePosition": "left",
-      "image": "feature1",
-      "buttonLink": "#install-map",
-      "buttonText": "Install Pricing Map"
+      "image": "feature1"
     },
     {
       "id": "installs",
       "title": "Sign installs for busy realtors.",
-      "description": "<p>ION Print & Promo provides trusted real estate sign installation and take-down services for realtors, agents and brokerages. We help wiith:</p><ul><li>Real estate sign installation</li><li>Sign take-downs</li><li>Custom toppers & sign printing</li><li>Service routes across Barrie & Simcoe County</li></ul><p>Be sure to check back for our FAQs <strong>(coming soon)</strong> for all the details and how to get signed up! </p>",
+      "description": "<p>ION Print & Promo provides trusted real estate sign installation and take-down services for realtors, agents and brokerages. We help wiith:</p><ul><li>Real estate sign installation</li><li>Sign take-downs</li><li>Custom toppers & sign printing</li><li>Service routes across Barrie & Simcoe County</li></ul>",
       "imageAlt": "Sign post installation in front yard",
       "imagePosition": "right",
-      "image": "feature2"
+      "image": "feature2",
+      "buttonLink": "#install-map",
+      "buttonText": "Service Area Map"
     },
     {
       "id": "printing",
@@ -57,7 +57,7 @@
     },
     {
       "id": "promo",
-      "title": "Promo products & client gifts.",
+      "title": "Promo products & gifts.",
       "description": "<p>Print & Promo helps sales agents and brokers create useful branded promo products and thoughtful client gifts that keep your name in front of buyers, sellers and neighbours.</p><ul><li>Branded pens, notepads & magnets</li><li>Closing gifts & thank-you items</li><li>Open house giveaways</li><li>Key tags & home-related promo items</li><li>Brokerage-branded merchandise</li></ul>",
       "imageAlt": "Sign post installation in front yard",
       "imagePosition": "right",
@@ -72,10 +72,34 @@
     "center": { "lat": 44.3894, "lng": -79.6903 },
     "zoom": 9,
     "zones": [
-      { "id": "z20", "minKm": 0,  "maxKm": 20, "surcharge": 0,  "color": "#16a34a" },
-      { "id": "z30", "minKm": 20, "maxKm": 30, "surcharge": 10, "color": "#d97706" },
-      { "id": "z40", "minKm": 30, "maxKm": 40, "surcharge": 15, "color": "#ea580c" },
-      { "id": "z50", "minKm": 40, "maxKm": 50, "surcharge": 20, "color": "#dc2626" }
+      {
+        "id": "z20",
+        "minKm": 0,
+        "maxKm": 20,
+        "surcharge": 0,
+        "color": "#16a34a"
+      },
+      {
+        "id": "z30",
+        "minKm": 20,
+        "maxKm": 30,
+        "surcharge": 10,
+        "color": "#d97706"
+      },
+      {
+        "id": "z40",
+        "minKm": 30,
+        "maxKm": 40,
+        "surcharge": 15,
+        "color": "#ea580c"
+      },
+      {
+        "id": "z50",
+        "minKm": 40,
+        "maxKm": 50,
+        "surcharge": 20,
+        "color": "#dc2626"
+      }
     ],
     "messages": {
       "free": "No surcharge — your address falls within the standard service area.",

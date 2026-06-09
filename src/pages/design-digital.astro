@@ -6,11 +6,12 @@ const entry = await getEntry("pages", "graphics");
 const content = entry!.data;
 
 import hero    from "../assets/heros/web-graphic-design.webp";
-import feature1 from "../assets/features/design/made-simple.jpg";
-import feature2 from "../assets/features/design/consistent-look.jpg";
+import feature1 from "../assets/features/design/smart-design.webp";
+import feature2 from "../assets/features/design/designed-here.webp";
+import feature3 from "../assets/features/design/design-support.webp";
 import icon    from "../assets/icons/graphics.png";
 
-const imageMap = { hero, feature1, feature2, icon };
+const imageMap = { hero, feature1, feature2, feature3, icon };
 ---
 
 <ServicePage content={content} imageMap={imageMap} />

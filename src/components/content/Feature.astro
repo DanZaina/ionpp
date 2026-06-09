@@ -36,11 +36,13 @@ const showButton = buttonText && buttonLink;
       <div
         class={`lg:px-0 ${isImageLeft ? "order-1 md:order-1" : "order-1 md:order-2"}`}
       >
-        <div class="overflow-hidden md:rounded-tr-4xl md:rounded-bl-4xl">
+        <div class="overflow-hidden md:rounded-tr-4xl md:rounded-bl-4xl max-w-[500px] mx-auto">
           <Image
             src={imageSrc}
             alt={imageAlt}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 560px"
+            width={500}
+            height={500}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
             loading="lazy"
             decoding="async"
             class="h-full w-full object-cover object-center"
