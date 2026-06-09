@@ -1077,7 +1077,7 @@ li {
 /* --- 5.9 Testimonials --- */
 
 .testimonial-rule {
-  @apply hidden lg:block w-44 h-1 mx-auto mb-4 rounded-full bg-sky-500;
+  @apply hidden lg:block w-44 h-1 mx-auto mb-4 rounded-full bg-sky-700;
 }
 
 .testimonial-container {
@@ -1112,7 +1112,10 @@ li {
 }
 
 .testimonial-dot {
-  @apply w-2.5 h-2.5 rounded-full border-0 p-0 cursor-pointer;
+  /* Visual dot is 10px; padding expands tap target to 24px minimum (a11y) */
+  @apply w-2.5 h-2.5 rounded-full border-0 cursor-pointer;
+  padding: 7px;
+  background-clip: content-box;
   background-color: var(--color-dot-inactive);
   transition: var(--transition-default);
 }

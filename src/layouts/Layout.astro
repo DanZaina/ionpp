@@ -28,20 +28,30 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <!-- Google Fonts — link tag persists across ClientRouter navigations -->
+    <!-- Google Fonts — non-render-blocking load via preload + onload swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
 
     <!--
-      Swiper JS loaded is:inline so the global Swiper is available before
-      swiper.js init runs. CSS is imported via global.css (npm package).
+      Swiper JS deferred so it doesn't block rendering. The global Swiper is
+      still available before swiper.js init runs because both are deferred and
+      execute in document order. CSS is imported via global.css (npm package).
     -->
     <script
       is:inline
+      defer
       src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"
     ></script>
 
@@ -49,7 +59,9 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Navigation transition:persist />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer transition:persist />
     <ScrollToTop transition:persist />
     <CookieBanner transition:persist />

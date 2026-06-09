@@ -29,6 +29,7 @@ const getSocialIcon = (platform: string) => {
 const socialIcons = socialData.socialIcons.map((social) => ({
   href: social.href,
   icon: getSocialIcon(social.icon),
+  label: social.icon.charAt(0).toUpperCase() + social.icon.slice(1),
 }));
 ---
 
@@ -38,6 +39,7 @@ const socialIcons = socialData.socialIcons.map((social) => ({
       <a
         href={social.href}
         class="social-icon-link"
+        aria-label={`Follow us on ${social.label}`}
         target="_blank"
         rel="noopener noreferrer"
         set:html={social.icon}

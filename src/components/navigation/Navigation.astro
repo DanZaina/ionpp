@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Logo from "../../assets/logos/logo-stacked-white.png";
 import LogoColour from "../../assets/logos/logo-stacked-colour.png";
 import SocialIcons from "../socials/SocialIcons.astro";
@@ -32,7 +33,7 @@ function dropdownIsActive(children: NavLink[]): boolean {
         <!-- Logo -->
         <a href="/" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
-          <img src={Logo.src} alt="Your Company" class="h-24 w-auto" />
+          <Image src={Logo} alt="Your Company" width={420} height={340} class="h-24 w-auto" />
         </a>
 
         <!-- Mobile Hamburger -->
@@ -155,7 +156,7 @@ function dropdownIsActive(children: NavLink[]): boolean {
     <div class="flex items-center justify-between">
       <a href="/" class="-m-1.5 p-1.5" data-mobile-link>
         <span class="sr-only">Your Company</span>
-        <img src={LogoColour.src} alt="Your Company" class="h-20 w-auto" />
+        <Image src={LogoColour} alt="Your Company" width={420} height={340} class="h-20 w-auto" />
       </a>
 
       <button

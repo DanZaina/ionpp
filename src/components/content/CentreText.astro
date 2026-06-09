@@ -4,15 +4,17 @@ export interface Props {
   description: string;
   imageSrc?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
-const { title, description, imageSrc, imageAlt = "Logo" } = Astro.props;
+const { title, description, imageSrc, imageAlt = "Logo", imageWidth, imageHeight } = Astro.props;
 ---
 
 <div class="mx-auto max-w-4xl text-center py-8 px-4 sm:px-6">
   {imageSrc && (
     <div class="flex justify-center mb-6">
-      <img alt={imageAlt} class="h-36 w-auto" src={imageSrc} />
+      <img alt={imageAlt} class="h-36 w-auto" src={imageSrc} width={imageWidth} height={imageHeight} />
     </div>
   )}
   <h2 >{title}</h2>
