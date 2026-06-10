@@ -10,7 +10,6 @@
  * ======================================================= */
 import Layout from "../layouts/Layout.astro";
 import SmallHero from "../components/hero/HeroSmall.astro";
-import { getImage } from "astro:assets";
 import CentreText from "../components/content/CentreText.astro";
 import Feature from "../components/content/Feature.astro";
 import ChecklistGrid from "../components/content/Checklistgrid.astro";
@@ -30,11 +29,9 @@ const { content, imageMap, checklistBg = "bg-slate-50" } = Astro.props;
 
 const features = content.features ?? [];
 const accordions = content.accordions ?? [];
-
-const preloadedHero = await getImage({ src: imageMap[content.hero.image], width: 1400, height: 900, format: "webp" });
 ---
 
-<Layout title={content.site.title} description={content.site.description} preloadImageSrc={preloadedHero.src}>
+<Layout title={content.site.title} description={content.site.description}>
   <!-- HERO SECTION -->
   <SmallHero
     title={content.hero.title}

@@ -23,11 +23,8 @@ import feature4Image from "../assets/features/main/design-digital.webp";
 
 // Content Data
 import { getEntry } from "astro:content";
-import { getImage } from "astro:assets";
 const entry = await getEntry("pages", "index");
 const content = entry!.data;
-
-const preloadedHero = await getImage({ src: heroImage, width: 1600, height: 1000, format: "webp" });
 
 /* =======================================================
  * CONFIGURATION
@@ -42,7 +39,7 @@ const imageMap = {
 };
 ---
 
-<Layout title={content.site.title} description={content.site.description} preloadImageSrc={preloadedHero.src}>
+<Layout title={content.site.title} description={content.site.description}>
   <!-- Hero Section -->
   <Hero
     title={content.hero.title}
