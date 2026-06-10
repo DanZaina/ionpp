@@ -532,7 +532,7 @@ li {
 }
 
 .mobile-nav-link {
-  @apply block -mx-3 rounded-lg py-2 px-3 text-base/7 capitalize no-underline;
+  @apply block -mx-3 rounded-lg py-2 px-3 text-lg/8 capitalize no-underline;
   color: var(--color-text-heading);
   font-weight: var(--font-weight-medium);
   transition: var(--transition-default);
@@ -553,7 +553,7 @@ li {
 }
 
 .mobile-dropdown-trigger {
-  @apply w-full flex items-center justify-between -mx-3 rounded-lg py-2 px-3 text-base/7 capitalize border-0 bg-transparent cursor-pointer;
+  @apply w-full flex items-center justify-between -mx-3 rounded-lg py-2 px-3 text-lg/8 capitalize border-0 bg-transparent cursor-pointer;
   color: var(--color-text-heading);
   font-weight: var(--font-weight-medium);
   transition: var(--transition-default);
@@ -579,7 +579,7 @@ li {
 }
 
 .mobile-dropdown-item {
-  @apply block -mx-3 rounded-lg py-2 pl-9 pr-3 text-sm/7 no-underline;
+  @apply block -mx-3 rounded-lg py-2 pl-9 pr-3 text-base/7 no-underline;
   color: var(--color-text-heading);
   font-weight: var(--font-weight-regular);
   transition: var(--transition-default);
@@ -1161,10 +1161,10 @@ li {
 }
 
 .cta-container {
-  @apply relative z-10 flex flex-col gap-8 items-start
+  @apply relative z-10 flex flex-col gap-8 items-center text-center
          w-full
-         px-5 py-12
-         sm:flex-row sm:items-center sm:gap-12
+         px-3 py-12
+         sm:flex-row sm:items-center sm:text-left sm:gap-12
          sm:px-12 sm:py-14
          lg:px-16;
 }

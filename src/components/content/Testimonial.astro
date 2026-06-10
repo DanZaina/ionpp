@@ -5,7 +5,8 @@ import { getEntry } from "astro:content";
 const testimonialsEntry = await getEntry("testimonials", "testimonials");
 const content = testimonialsEntry!.data;
 
-const { sectionTitle, maxChars, items } = content.testimonials;
+const { sectionTitle, maxChars, maxCharsMobile, items } = content.testimonials;
+const mobileLimit = maxCharsMobile ?? maxChars;
 
 function truncate(text: string, limit: number): string {
   if (text.length <= limit) return text;
@@ -61,7 +62,8 @@ function truncate(text: string, limit: number): string {
             data-index={index}
             aria-hidden={index !== 0}
           >
-            <p class="testimonial-text">{truncate(item.content, maxChars)}</p>
+            <p class="testimonial-text sm:hidden">{truncate(item.content, mobileLimit)}</p>
+            <p class="testimonial-text hidden sm:block">{truncate(item.content, maxChars)}</p>
             <figcaption class="testimonial-author">
               <span>{item.author}</span>
             </figcaption>

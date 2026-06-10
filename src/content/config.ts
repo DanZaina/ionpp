@@ -103,19 +103,6 @@ const pages = defineCollection({
       })
       .optional(),
 
-    // Home page inline testimonials
-    testimonials: z
-      .object({
-        sectionTitle: z.string(),
-        items: z.array(
-          z.object({
-            content: z.string(),
-            author: z.string(),
-          })
-        ),
-      })
-      .optional(),
-
     // Home page inline footer social links
     footer: z
       .object({
@@ -239,6 +226,7 @@ const testimonials = defineCollection({
     testimonials: z.object({
       sectionTitle: z.string(),
       maxChars: z.number(),
+      maxCharsMobile: z.number().optional(),
       items: z.array(
         z.object({
           id: z.string(),

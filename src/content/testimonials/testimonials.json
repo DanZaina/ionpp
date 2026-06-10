@@ -2,6 +2,7 @@
   "testimonials": {
     "sectionTitle": "Real Stories. Real People.",
     "maxChars": 280,
+    "maxCharsMobile": 200,
     "items": [
       {
         "id": "katlyn-hunter",
@@ -25,7 +26,7 @@
       },
       {
         "id": "gabriella-bueno",
-        "content": "We've worked with IO Promo for several years now at Ontario Soccer, and Rob has consistently been a trusted partner - always reliable, responsive, and there when we need support. When we said we wanted to open a store, Rob reassured us he could help - and they really did! Dan also played a key role in bringing our vision for the online store to life. During a particularly busy period, he showed great flexibility, dedication, and a solutions-oriented mindset. We're very happy with the final result and truly appreciate the effort and care that this team put in. Always great quality and service!",
+        "content": "We've worked with IO Promo for several years now at Ontario Soccer, and Rob has consistently been a trusted partner - always reliable, responsive, and there when we need support. When we said we wanted to open a store, Rob reassured us he could help - and they really did!",
         "author": "Gabriella Bueno"
       }
     ]

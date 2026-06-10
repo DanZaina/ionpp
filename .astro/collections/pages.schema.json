@@ -208,38 +208,6 @@
           ],
           "additionalProperties": false
         },
-        "testimonials": {
-          "type": "object",
-          "properties": {
-            "sectionTitle": {
-              "type": "string"
-            },
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "content": {
-                    "type": "string"
-                  },
-                  "author": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "content",
-                  "author"
-                ],
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": [
-            "sectionTitle",
-            "items"
-          ],
-          "additionalProperties": false
-        },
         "footer": {
           "type": "object",
           "properties": {

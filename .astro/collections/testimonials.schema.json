@@ -13,6 +13,9 @@
             "maxChars": {
               "type": "number"
             },
+            "maxCharsMobile": {
+              "type": "number"
+            },
             "items": {
               "type": "array",
               "items": {
