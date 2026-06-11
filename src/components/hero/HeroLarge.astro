@@ -54,6 +54,7 @@ const {
           alt={imageAlt}
           width={1600}
           height={1000}
+          quality={70}
           sizes="(max-width: 1024px) 0px, 50vw"
           loading="eager"
           fetchpriority="high"
@@ -68,12 +69,12 @@ const {
 <style>
   .image-zoom {
     opacity: 0;
-    animation: fadeIn 0.8s ease-in-out forwards, slowZoom 10s 0.8s ease-in-out infinite alternate;
+    transition: opacity 0.8s ease-in-out;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  .image-zoom.is-loaded {
+    opacity: 1;
+    animation: slowZoom 10s 0.8s ease-in-out infinite alternate;
   }
 
   @keyframes slowZoom {
