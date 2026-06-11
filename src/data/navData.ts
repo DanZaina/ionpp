@@ -27,16 +27,12 @@ export interface FooterLink {
 
 export const navigationItems: NavItem[] = [
   {
-    type: "dropdown",
+    type: "link",
     data: {
       label: "Printing",
       footerLabel: "Printing Services",
       href: "/printing",
-      children: [
-        { label: "All Printing Services", href: "/printing" },
-        // { label: "Booklets & Manuals",    href: "/printing/booklets-manuals" },
-      ],
-    } as NavDropdown,
+    } as NavLink,
   },
   {
     type: "link",
