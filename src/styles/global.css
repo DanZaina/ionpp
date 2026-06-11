@@ -28,6 +28,7 @@
  *     5.9  Cookie Banner
  *     5.10 Accordions
  *     5.11 Testimonials
+ *     5.12 Tab Navigation
  * 6.  Sections
  *     6.1  CTA
  *     6.2  Contact
@@ -487,7 +488,7 @@ li {
 }
 
 .dropdown-arrow {
-  @apply inline-block w-2.5 h-2.5;
+  @apply inline-block w-3.5 h-3.5;
   transition: transform 300ms ease;
 }
 
@@ -526,9 +527,18 @@ li {
 }
 
 .dropdown-item-title {
-  @apply block text-sm mb-1;
+  @apply block text-sm/loose;
   color: var(--color-text-heading);
   font-weight: var(--font-weight-medium);
+}
+
+.dropdown-item[aria-current="page"] {
+  background-color: var(--color-bg-subtle);
+}
+
+.dropdown-item[aria-current="page"] .dropdown-item-title {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .mobile-nav-link {
@@ -587,6 +597,11 @@ li {
 
 .mobile-dropdown-item:hover {
   background-color: var(--color-bg-muted);
+}
+
+.mobile-dropdown-item[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .mobile-backdrop {
@@ -1235,6 +1250,66 @@ li {
 .contact-form-card {
   @apply rounded-xl shadow-lg p-8;
   background-color: var(--color-bg-white);
+}
+
+
+/* --- 5.12 Tab Navigation --- */
+
+.tab-nav-section {
+  @apply hidden lg:block container mx-auto px-4 max-w-6xl;
+}
+
+.tab-nav-card {
+  @apply relative py-8 sm:py-12 px-6 sm:px-12 bg-white rounded-2xl shadow-lg overflow-hidden;
+}
+
+.tab-nav-decoration {
+  @apply absolute bottom-0 right-0 w-28 h-28 sm:w-36 sm:h-36 text-slate-50;
+}
+
+.tab-nav-pills {
+  @apply relative z-10 flex justify-center flex-wrap gap-3;
+}
+
+.tab-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.75rem;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  color: var(--slate-500);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  background: none;
+  font-size: 1rem;
+  line-height: 1.625;
+  white-space: nowrap;
+}
+
+.tab-pill:hover {
+  color: var(--color-primary);
+  background: var(--sky-50);
+  border-color: var(--sky-200);
+}
+
+.tab-pill.active {
+  background: var(--sky-50);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  border-color: var(--color-primary);
+}
+
+.tab-icon {
+  width: 28px;
+  height: 28px;
+  opacity: 0.6;
+}
+
+.tab-pill.active .tab-icon,
+.tab-pill:hover .tab-icon {
+  opacity: 1;
 }
 
 

@@ -2,14 +2,25 @@
 interface Props {
   title: string;
   description: string;
+  buttonText?: string;
+  buttonLink?: string;
+  buttonTarget?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, buttonText, buttonLink, buttonTarget } = Astro.props;
+const showButton = buttonText && buttonLink;
 ---
 
 <div class="mx-auto max-w-6xl px-4 sm:px-6">
   <div class="bg-slate-50 rounded-2xl px-8 sm:px-14 py-10 sm:py-14">
     <h3>{title}</h3>
     <div set:html={description} />
+    {showButton && (
+      <div class="mt-6">
+        <a href={buttonLink} class="btn" target={buttonTarget ?? "_self"}>
+          {buttonText}
+        </a>
+      </div>
+    )}
   </div>
 </div>

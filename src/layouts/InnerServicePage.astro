@@ -2,30 +2,36 @@
 /* =======================================================
  * InnerServicePage.astro
  * Layout for inner service sub-pages (e.g. Booklets & Manuals).
- * Spacing mirrors ServicePage.astro exactly.
- *
- * Each section has a "type":
- *   "feature" — uses Feature.astro (image + text, alternating sides)
- *   "centre"  — uses ServiceSection.astro (centred text, no image)
+ * Mirrors ServicePage.astro — tabs replace the ChecklistGrid.
  * ======================================================= */
 
 import Layout from "../layouts/Layout.astro";
 import SmallHero from "../components/hero/HeroSmall.astro";
 import CentreText from "../components/content/CentreText.astro";
-import ServiceFeatureNav from "../components/content/ServiceFeatureNav.astro";
-import ServiceSection from "../components/content/ServiceSection.astro";
 import Feature from "../components/content/Feature.astro";
 import CTA from "../components/content/CTA.astro";
 
 interface Props {
   content: any;
   imageMap: Record<string, ImageMetadata>;
+  checklistBg?: string;
 }
 
-const { content, imageMap } = Astro.props;
+const { content, imageMap, checklistBg = "bg-slate-50" } = Astro.props;
 
-const navItems = content.featureNav ?? [];
-const sections = content.sections ?? [];
+const featureNav = content.featureNav ?? [];
+const features = content.features ?? [];
+
+// Load small tab icons
+const iconModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/icons/small/*.png",
+  { eager: true }
+);
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, mod] of Object.entries(iconModules)) {
+  const filename = path.split("/").pop()!;
+  iconMap[filename] = mod.default;
+}
 ---
 
 <Layout title={content.site.title} description={content.site.description}>
@@ -38,59 +44,108 @@ const sections = content.sections ?? [];
     bgColor={content.hero.bgColor}
   />
 
-  <!-- CENTRE TEXT — mirrors ServicePage -->
-  <section class="sm:pt-12 relative bg-slate-50">
-    <CentreText
-      title={content.centreText.title}
-      description={content.centreText.description}
-      imageSrc={imageMap[content.centreText.icon]?.src}
-      imageAlt="ION Group"
-    />
-  </section>
+  <!-- CENTRE TEXT -->
+  {content.centreText && (
+    <section class={`sm:pt-12 relative ${checklistBg}`}>
+      <CentreText
+        title={content.centreText.title}
+        description={content.centreText.description}
+        imageSrc={imageMap[content.centreText.icon].src}
+        imageAlt="ION Group Logo"
+      />
+    </section>
+  )}
 
-  <!-- FEATURE NAV — mirrors ServicePage checklist section -->
-  <section class="bg-slate-50">
-    <div class="pt-6">
-      <ServiceFeatureNav items={navItems} />
-    </div>
-  </section>
+  <!-- TAB NAV (replaces ChecklistGrid) -->
+  {featureNav.length > 0 && (
+    <section class={checklistBg}>
+      <div class="tab-nav-section">
+        <div class="tab-nav-card">
+          <!-- Decorative circle (matches ChecklistGrid) -->
+          <svg
+            class="tab-nav-decoration"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="100" cy="100" r="80" fill="currentColor" />
+            <path d="M100 60 Q80 80 60 100 L100 100 Z" fill="white" fill-opacity="0.3" />
+          </svg>
 
-  <!-- SECTIONS — single bg-white wrapper with overlap, mirrors ServicePage features -->
-  <section class="pt-6 sm:pb-20 sm:pt-32 sm:-mt-24 bg-white">
-    {sections.map((section: any) => {
-      if (section.type === "centre") {
-        return (
-          <div id={section.id}>
-            <ServiceSection
-              title={section.title}
-              description={section.description}
-            />
+          <div class="tab-nav-pills">
+            {featureNav.map((tab: any, i: number) => (
+              <button
+                class={`tab-pill${i === 0 ? " active" : ""}`}
+                data-target={tab.anchor}
+                type="button"
+              >
+                {iconMap[tab.icon] && (
+                  <img
+                    src={iconMap[tab.icon].src}
+                    alt=""
+                    class="tab-icon"
+                    width="28"
+                    height="28"
+                  />
+                )}
+                {tab.label}
+              </button>
+            ))}
           </div>
-        );
-      }
-
-      return (
-        <div id={section.id}>
-          <Feature
-            title={section.title}
-            description={section.description}
-            imageSrc={imageMap[section.image]}
-            imageAlt={section.imageAlt ?? ""}
-            imagePosition={section.imagePosition}
-            buttonText={section.buttonText}
-            buttonLink={section.buttonLink}
-            buttonTarget={section.buttonTarget}
-          />
         </div>
-      );
-    })}
+      </div>
+    </section>
+  )}
+
+  <!-- FEATURE SECTIONS -->
+  <section class="pt-6 sm:py-32 sm:-mt-24 bg-white">
+    {features.map((feature: any, i: number) => (
+      <div data-panel={feature.id} hidden={featureNav.length > 0 && i !== 0}>
+        <Feature
+          title={feature.title}
+          description={feature.description}
+          imageSrc={imageMap[feature.image]}
+          imageAlt={feature.imageAlt}
+          imagePosition={feature.imagePosition}
+          buttonLink={feature.buttonLink}
+          buttonText={feature.buttonText}
+          buttonTarget={feature.buttonTarget}
+        />
+      </div>
+    ))}
   </section>
 
-  <!-- CTA — mirrors ServicePage -->
-  <CTA
-    heading={content.cta.heading}
-    button={content.cta.button}
-    link={content.cta.link}
-  />
+  <!-- CTA -->
+  {content.cta && (
+    <CTA
+      heading={content.cta.heading}
+      button={content.cta.button}
+      link={content.cta.link}
+    />
+  )}
 
 </Layout>
+
+<script>
+  function initTabs() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>(".tab-pill");
+    if (!tabs.length) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        const targetId = tab.dataset.target;
+        document.querySelectorAll<HTMLElement>("[data-panel]").forEach((p) => {
+          p.hidden = true;
+        });
+        const panel = document.querySelector<HTMLElement>(
+          `[data-panel="${targetId}"]`
+        );
+        if (panel) panel.hidden = false;
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initTabs);
+</script>

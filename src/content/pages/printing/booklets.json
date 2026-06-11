@@ -10,8 +10,8 @@
     "image": "hero"
   },
   "centreText": {
-    "title": "Detailed manuals to polished sales catalogues",
-    "description": "We print booklets that help you communicate clearly and confidently. Whether you're educating, presenting, or selling, we make sure your content is easy to read, easy to handle, and built to reflect your brand.",
+    "title": "Communicate clearly & confidently",
+    "description": "Whether you're educating, presenting, or selling, we print booklets making sure your content is easy to read, easy to handle, and built to reflect your brand.",
     "icon": "icon"
   },
   "featureNav": [
@@ -31,29 +31,31 @@
       "anchor": "booklets"
     }
   ],
-  "sections": [
+  "features": [
     {
-      "type": "feature",
       "id": "manuals",
       "title": "Manuals & reports.",
-      "description": "<p>We produce clean, well-organized manuals and reports that are built for everyday use.</p><p>We print a wide range of manuals & reports including:</p><ul><li>Training manuals & employee handbooks</li><li>Safety manuals & compliance documents</li><li>Annual & corporate reports</li><li>Instructional guides & technical documents</li></ul><p>Need <a href='/printing/office-stationery'>custom office stationery</a>? We do that!</p>",
+      "description": "<p>We produce clean, well-organized manuals and reports that are built for everyday use.</p><p>We print a wide range of manuals & reports including:</p><ul><li>Training manuals & employee handbooks</li><li>Safety manuals & compliance documents</li><li>Annual & corporate reports</li><li>Instructional guides & technical documents</li></ul><p>Need custom office stationery? We do that!</p>",
       "imagePosition": "left",
       "image": "feature1",
-      "imageAlt": "Professional manual and report printing"
+      "imageAlt": "Professional manual and report printing",
+      "buttonLink": "/contact",
+      "buttonText": "Learn More"
     },
     {
-      "type": "centre",
       "id": "catalogues",
       "title": "Catalogues & sales materials.",
-      "description": "<p>Shine your products and services in the best possible light. We are here to make it easy for customers to browse and buy! We print and offer a range of finishing enhancements, including:</p><ul><li>Product catalogues & line sheets</li><li>Sales booklets & leave-behinds</li><li>Real estate & feature sheets</li><li>Event & program guides</li><li>Premium paper stocks & finishes</li><li>Clean layouts for easy navigation</li><li>Short-run & bulk printing options</li></ul><p>Complete your sales toolkit with <a href='/printing/rack-cards'>rack cards and postcards</a> that keep you top of mind.</p>"
+      "description": "<p>Shine your products and services in the best possible light. We are here to make it easy for customers to browse and buy! We print and offer a range of finishing enhancements, including:</p><ul><li>Product catalogues & line sheets</li><li>Sales booklets & leave-behinds</li><li>Real estate & feature sheets</li><li>Event & program guides</li><li>Premium paper stocks & finishes</li><li>Clean layouts for easy navigation</li><li>Short-run & bulk printing options</li></ul><p>Complete your sales toolkit with <a href='/printing/rack-cards'>rack cards and postcards</a> that keep you top of mind.</p>",
+      "imagePosition": "right",
+      "image": "feature2",
+      "imageAlt": "Professional catalogue and sales material printing"
     },
     {
-      "type": "feature",
       "id": "booklets",
       "title": "Specialty booklets.",
       "description": "<p>We help you create polished, professional materials for presentations, events, and internal communications with custom printing and finishing options that elevate your materials:</p><ul><li>Presentation booklets & pitch decks</li><li>Company profiles & brand books</li><li>Event packages & information kits</li><li>Custom booklet formats for unique projects</li><li>Presentation folders & inserts</li><li>Tabs, covers & custom sizing</li><li>Coordinated print packages for events or meetings</li></ul>",
       "imagePosition": "left",
-      "image": "feature2",
+      "image": "feature1",
       "imageAlt": "Specialty booklet and presentation printing"
     }
   ],

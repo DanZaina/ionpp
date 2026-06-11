@@ -27,26 +27,17 @@ export interface FooterLink {
 
 export const navigationItems: NavItem[] = [
   {
-    type: "link",
+    type: "dropdown",
     data: {
       label: "Printing",
       footerLabel: "Printing Services",
       href: "/printing",
-    } as NavLink,
+      children: [
+        { label: "All Printing Services", href: "/printing" },
+        // { label: "Booklets & Manuals",    href: "/printing/booklets-manuals" },
+      ],
+    } as NavDropdown,
   },
-  // TODO: re-enable dropdown when inner service pages are ready
-  // {
-  //   type: "dropdown",
-  //   data: {
-  //     label: "Printing",
-  //     footerLabel: "Printing Services",
-  //     href: "/printing",
-  //     children: [
-  //       { label: "All Printing Services", href: "/printing" },
-  //       { label: "Booklets & Manuals",    href: "/printing/booklets-manuals" },
-  //     ],
-  //   } as NavDropdown,
-  // },
   {
     type: "link",
     data: {

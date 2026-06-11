@@ -2,7 +2,7 @@
 import InnerServicePage from "../../layouts/InnerServicePage.astro";
 import { getEntry } from "astro:content";
 
-const entry = await getEntry("pages", "booklets");
+const entry = await getEntry("pages", "printing/booklets");
 const content = entry!.data;
 
 import hero     from "../../assets/heros/printing-main.webp";
